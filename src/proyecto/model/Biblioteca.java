@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class Biblioteca {
+
+  public static final Logger log = Logger.getLogger(Biblioteca.class.getName());
   private Map<String, Libros> catalogoLibros;
   private Map<String, Set<Libros>> librosPorCategoria;
   private Set<Usuarios> usuariosRegistrados;
@@ -39,14 +42,14 @@ public class Biblioteca {
     try {
       Libros libro = buscarLibro(isbn);
       if (libro == null) {
-        System.out.println("Libro no encontrado.");
+        log.info("Libro no encontrado.");
         return;
       }
       libro.prestar(usuario);
       Prestamos prestamo = new Prestamos(libro, usuario);
       usuario.agregarPrestamo(prestamo);
     } catch (LibroNoDisponibleException e) {
-      System.out.println(e.getMessage());
+      log.info(e.getMessage());
     }
   }
 
@@ -72,7 +75,7 @@ public class Biblioteca {
     if (libros != null) {
       libros.forEach(System.out::println);
     } else {
-      System.out.println("No hay libros en la categoría " + categoria);
+      log.info("No hay libros en la categoría " + categoria);
     }
   }
 }

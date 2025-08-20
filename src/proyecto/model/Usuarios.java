@@ -3,7 +3,7 @@ package proyecto.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Usuarios {
+public class Usuarios {
   private int id;
   private String nombre;
   private List<Prestamos> historialPrestamos;

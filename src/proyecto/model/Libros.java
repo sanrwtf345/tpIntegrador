@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Logger;
 
-public abstract class Libros implements Prestable, Reservable {
+public class Libros implements Prestable, Reservable {
 
   public static final Logger log = Logger.getLogger(Libros.class.getName());
   private String isbn;
